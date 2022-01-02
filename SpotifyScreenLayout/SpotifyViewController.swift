@@ -10,9 +10,11 @@ import UIKit
 class SpotifyViewController: UIViewController {
 
     let stackView: UIStackView
+    let playerView: PlayerView
     
     init() {
         stackView = makeStackView(withOrientation: .vertical)
+        playerView = PlayerView()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,7 +31,8 @@ class SpotifyViewController: UIViewController {
     }
 
     private func setupViews() {
-        stackView.addSubview(makeAlbumImageView())
+        stackView.addArrangedSubview(makeAlbumImageView())
+        stackView.addArrangedSubview(makePlayerStackView())
         
         view.addSubview(stackView)
         
@@ -59,6 +62,18 @@ class SpotifyViewController: UIViewController {
         heighAnchorConstraint.isActive = true
         
         return albumImage
+    }
+    
+    private func makePlayerStackView() -> UIStackView {
+        let stackView = makeStackView(withOrientation: .vertical)
+        
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 0, leading: 8, bottom: 0, trailing: 8
+        )
+        stackView.addArrangedSubview(playerView)
+        
+        return stackView
     }
 }
 
