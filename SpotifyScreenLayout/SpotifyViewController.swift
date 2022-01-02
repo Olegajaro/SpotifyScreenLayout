@@ -13,6 +13,8 @@ class SpotifyViewController: UIViewController {
     let stackView: UIStackView
     let playerView: PlayerView
     
+    var bottomAnchorConstraint = NSLayoutConstraint()
+    
     // MARK: - Lifecycle
     init() {
         stackView = makeStackView(withOrientation: .vertical)
@@ -28,8 +30,8 @@ class SpotifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViews()
         registerForOrientationChanges()
+        setupViews()
     }
     
     // MARK: - Helpers
@@ -57,9 +59,10 @@ class SpotifyViewController: UIViewController {
         stackView.trailingAnchor.constraint(
             equalTo: view.trailingAnchor
         ).isActive = true
-        stackView.bottomAnchor.constraint(
+        
+        bottomAnchorConstraint = stackView.bottomAnchor.constraint(
             equalTo: view.bottomAnchor
-        ).isActive = true
+        )
     }
     
     // MARK: - Factory Methods
@@ -93,8 +96,10 @@ class SpotifyViewController: UIViewController {
     @objc private func rotated() {
         if UIDevice.current.orientation.isLandscape {
             stackView.axis = .horizontal
+            bottomAnchorConstraint.isActive = true
         } else {
             stackView.axis = .vertical
+            bottomAnchorConstraint.isActive = false
         }
         
         playerView.adjustForOrientation()

@@ -9,13 +9,14 @@ import UIKit
 
 class PlayerView: UIView {
     
-    let stackView: UIStackView
-    let topSpacer = makeSpacerView(height: 100)
-    let bottomSpacer = makeSpacerView(height: 100)
+    var topSpacer: UIView
+    var bottomSpacer: UIView
     
     init() {
-        stackView = makeStackView(withOrientation: .vertical)
-        stackView.distribution = .fillProportionally
+        topSpacer = makeSpacerView(height: 100)
+        // topSpacer.backgroundColor = .red
+        bottomSpacer = makeSpacerView(height: 100)
+        // bottomSpacer.backgroundColor = .blue
         
         super.init(frame: .zero)
         
@@ -27,10 +28,15 @@ class PlayerView: UIView {
     }
     
     private func setupViews() {
+        let stackView = makeStackView(withOrientation: .vertical)
+        stackView.distribution = .fillProportionally
+        
         let trackLabel = makeTrackLabel(withText: "Tom Sawyer")
         let albumLabel = makeAlbumLabel(withText: "Rush • Moving Pictures (2011 Remaster)")
         let progressView = ProgressRow()
         let spotifyButton = makeSpotifyButtonCustomView()
+        
+        addSubview(stackView)
         
         stackView.addArrangedSubview(topSpacer)
         stackView.addArrangedSubview(trackLabel)
@@ -39,16 +45,22 @@ class PlayerView: UIView {
         stackView.addArrangedSubview(spotifyButton)
         stackView.addArrangedSubview(bottomSpacer)
         
-        addSubview(stackView)
+        topSpacer.heightAnchor.constraint(
+            equalTo: bottomSpacer.heightAnchor
+        ).isActive = true
         
+        stackView.topAnchor.constraint(
+            equalTo: topAnchor
+        ).isActive = true
         stackView.leadingAnchor.constraint(
             equalTo: leadingAnchor
         ).isActive = true
         stackView.trailingAnchor.constraint(
             equalTo: trailingAnchor
         ).isActive = true
-        
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(
+            equalTo: bottomAnchor
+        ).isActive = true
     }
     
     private func makeSpotifyButtonCustomView() -> UIView {
@@ -67,17 +79,20 @@ class PlayerView: UIView {
         spotifyButton.centerYAnchor.constraint(
             equalTo: container.centerYAnchor
         ).isActive = true
+        spotifyButton.heightAnchor.constraint(
+            equalToConstant: buttonHeight
+        ).isActive = true
         
         return container
     }
     
     func adjustForOrientation() {
-        if UIDevice.current.orientation.isPortrait {
+        if UIDevice.current.orientation.isLandscape {
+            topSpacer.isHidden = false
+            bottomSpacer.isHidden = false
+        } else {
             topSpacer.isHidden = true
             bottomSpacer.isHidden = true
-        } else {
-            topSpacer.isHidden = false
-            topSpacer.isHidden = false
         }
     }
     
