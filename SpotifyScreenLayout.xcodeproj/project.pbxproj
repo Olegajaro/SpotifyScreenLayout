@@ -12,6 +12,7 @@
 		100411E52781D4130075D136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100411E42781D4130075D136 /* Assets.xcassets */; };
 		100411E82781D4130075D136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 100411E62781D4130075D136 /* LaunchScreen.storyboard */; };
 		100411F12781D5710075D136 /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100411F02781D5710075D136 /* Factories.swift */; };
+		100411F32781D9BA0075D136 /* ProgressRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100411F22781D9BA0075D136 /* ProgressRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		100411E72781D4130075D136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		100411E92781D4130075D136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		100411F02781D5710075D136 /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
+		100411F22781D9BA0075D136 /* ProgressRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				100411DB2781D4120075D136 /* AppDelegate.swift */,
 				100411DF2781D4120075D136 /* SpotifyViewController.swift */,
+				100411F22781D9BA0075D136 /* ProgressRow.swift */,
 				100411F02781D5710075D136 /* Factories.swift */,
 				100411EF2781D4960075D136 /* Files */,
 			);
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				100411F12781D5710075D136 /* Factories.swift in Sources */,
+				100411F32781D9BA0075D136 /* ProgressRow.swift in Sources */,
 				100411E02781D4120075D136 /* SpotifyViewController.swift in Sources */,
 				100411DC2781D4120075D136 /* AppDelegate.swift in Sources */,
 			);
