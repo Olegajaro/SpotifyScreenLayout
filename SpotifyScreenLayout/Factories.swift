@@ -76,15 +76,15 @@ func makeSpotifyButton(withText title: String) -> UIButton {
     let button = UIButton()
     
     button.translatesAutoresizingMaskIntoConstraints = false
+    button.configuration = .plain()
     button.titleLabel?.minimumScaleFactor = 0.5 // default 0
     button.titleLabel?.adjustsFontSizeToFitWidth = true // default false
     button.backgroundColor = .spotifyGreen
     button.setTitleColor(.white, for: .normal)
     button.layer.cornerRadius = buttonHeight / 2
     button.configuration?.contentInsets = NSDirectionalEdgeInsets(
-        top: 10, leading: 10, bottom: 10, trailing: buttonHeight
+        top: 10, leading: buttonHeight, bottom: 10, trailing: buttonHeight
     )
-//    button.contentEdgeInsets = UIEdgeInsets(top: 10, left: buttonHeight, bottom: 10, right: buttonHeight)
 
     let attributedText = NSMutableAttributedString(string: title, attributes: [
         NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
