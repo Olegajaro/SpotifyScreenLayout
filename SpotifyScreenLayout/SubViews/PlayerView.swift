@@ -10,8 +10,8 @@ import UIKit
 class PlayerView: UIView {
     
     let stackView: UIStackView
-    var topAnchorConstraint = NSLayoutConstraint()
-    var centerYAnchorConstraint = NSLayoutConstraint()
+    let topSpacer = makeSpacerView(height: 100)
+    let bottomSpacer = makeSpacerView(height: 100)
     
     init() {
         stackView = makeStackView(withOrientation: .vertical)
@@ -32,10 +32,12 @@ class PlayerView: UIView {
         let progressView = ProgressRow()
         let spotifyButton = makeSpotifyButtonCustomView()
         
+        stackView.addArrangedSubview(topSpacer)
         stackView.addArrangedSubview(trackLabel)
         stackView.addArrangedSubview(albumLabel)
         stackView.addArrangedSubview(progressView)
         stackView.addArrangedSubview(spotifyButton)
+        stackView.addArrangedSubview(bottomSpacer)
         
         addSubview(stackView)
         
@@ -46,8 +48,7 @@ class PlayerView: UIView {
             equalTo: trailingAnchor
         ).isActive = true
         
-        topAnchorConstraint = stackView.topAnchor.constraint(equalTo: topAnchor)
-        centerYAnchorConstraint = stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
     
     private func makeSpotifyButtonCustomView() -> UIView {
@@ -72,11 +73,11 @@ class PlayerView: UIView {
     
     func adjustForOrientation() {
         if UIDevice.current.orientation.isPortrait {
-            topAnchorConstraint.isActive = true
-            centerYAnchorConstraint.isActive = false
+            topSpacer.isHidden = true
+            bottomSpacer.isHidden = true
         } else {
-            topAnchorConstraint.isActive = false
-            centerYAnchorConstraint.isActive = true
+            topSpacer.isHidden = false
+            topSpacer.isHidden = false
         }
     }
     
