@@ -92,6 +92,8 @@ class SpotifyViewController: UIViewController {
         } else {
             stackView.axis = .vertical
         }
+        
+        playerView.adjustForOrientation()
     }
     
     deinit {

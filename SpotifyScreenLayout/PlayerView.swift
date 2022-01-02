@@ -10,6 +10,8 @@ import UIKit
 class PlayerView: UIView {
     
     let stackView: UIStackView
+    var topAnchorConstraint = NSLayoutConstraint()
+    var centerYAnchorConstraint = NSLayoutConstraint()
     
     init() {
         stackView = makeStackView(withOrientation: .vertical)
@@ -37,9 +39,21 @@ class PlayerView: UIView {
         
         addSubview(stackView)
         
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+        topAnchorConstraint = stackView.topAnchor.constraint(equalTo: topAnchor)
+        centerYAnchorConstraint = stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+    }
+    
+    func adjustForOrientation() {
+        if UIDevice.current.orientation.isPortrait {
+            topAnchorConstraint.isActive = true
+            centerYAnchorConstraint.isActive = false
+        } else {
+            topAnchorConstraint.isActive = false
+            centerYAnchorConstraint.isActive = true
+        }
     }
     
     override var intrinsicContentSize: CGSize {
