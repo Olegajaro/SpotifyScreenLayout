@@ -60,9 +60,8 @@
 			children = (
 				100411DB2781D4120075D136 /* AppDelegate.swift */,
 				100411DF2781D4120075D136 /* SpotifyViewController.swift */,
-				100411F22781D9BA0075D136 /* ProgressRow.swift */,
-				100411F42781DC080075D136 /* PlayerView.swift */,
 				100411F02781D5710075D136 /* Factories.swift */,
+				100411F62781E57D0075D136 /* SubViews */,
 				100411EF2781D4960075D136 /* Files */,
 			);
 			path = SpotifyScreenLayout;
@@ -76,6 +75,15 @@
 				100411E92781D4130075D136 /* Info.plist */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		100411F62781E57D0075D136 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				100411F22781D9BA0075D136 /* ProgressRow.swift */,
+				100411F42781DC080075D136 /* PlayerView.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

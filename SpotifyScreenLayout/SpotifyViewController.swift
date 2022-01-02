@@ -8,10 +8,12 @@
 import UIKit
 
 class SpotifyViewController: UIViewController {
-
+    
+    // MARK: - Properties
     let stackView: UIStackView
     let playerView: PlayerView
     
+    // MARK: - Lifecycle
     init() {
         stackView = makeStackView(withOrientation: .vertical)
         playerView = PlayerView()
@@ -29,6 +31,8 @@ class SpotifyViewController: UIViewController {
         setupViews()
         registerForOrientationChanges()
     }
+    
+    // MARK: - Helpers
     
     private func registerForOrientationChanges() {
         NotificationCenter.default.addObserver(
