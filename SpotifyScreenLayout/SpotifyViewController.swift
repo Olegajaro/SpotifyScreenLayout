@@ -23,11 +23,19 @@ class SpotifyViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
+        registerForOrientationChanges()
+    }
+    
+    private func registerForOrientationChanges() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(SpotifyViewController.rotated),
+            name: UIDevice.orientationDidChangeNotification,
+            object: nil
+        )
     }
 
     private func setupViews() {
@@ -74,6 +82,20 @@ class SpotifyViewController: UIViewController {
         stackView.addArrangedSubview(playerView)
         
         return stackView
+    }
+    
+    // MARK: - Rotation
+    
+    @objc private func rotated() {
+        if UIDevice.current.orientation.isLandscape {
+            stackView.axis = .horizontal
+        } else {
+            stackView.axis = .vertical
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
